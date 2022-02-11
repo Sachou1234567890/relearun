@@ -36,5 +36,7 @@ jobs:
         run: composer install
       - name: Créer une bdd
         run: php bin/console doctrine:database:create 
-
-
+      - name: Make migration
+        run: php bin/console doctrine:migrations:migrate
+      - name: Execution du script SQL
+        run: php bin/console -n doctrine:migrations:migrate
